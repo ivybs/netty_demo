@@ -14,6 +14,8 @@ import java.util.Iterator;
 public class GroupChatServer {
     // 定义属性
     private Selector selector;
+    // ServerSocketChannel 在服务器端监听新的客户端 Socket 连接
+    // SocketChannel，网络 IO 通道，具体负责进行读写操作。NIO 把缓冲区的数据写入通道，或者把通道里的数据读到缓冲区。
     private ServerSocketChannel listener;
     private static  final int PORT = 6667;
     // 构造器 进行初始化
