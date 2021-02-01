@@ -13,6 +13,7 @@ import java.util.Iterator;
  * */
 public class GroupChatServer {
     // 定义属性
+    // 在reactor模式中充当了reactor的角色
     private Selector selector;
     // ServerSocketChannel 在服务器端监听新的客户端 Socket 连接
     // SocketChannel，网络 IO 通道，具体负责进行读写操作。NIO 把缓冲区的数据写入通道，或者把通道里的数据读到缓冲区。
@@ -37,6 +38,7 @@ public class GroupChatServer {
 
         }
     }
+
     // 监听
     public void listen(){
         try{
@@ -146,7 +148,18 @@ public class GroupChatServer {
 
     public static void main(String[] args) {
         //创建一个服务器对象
+        // 相当于reactor模式下的reactor
+        // 相当于起一个独立的线程一直监听客户端的事件，并且当事件发生后进行事件任务的分配
+        // 只不过这里的分配是分配给一个线程，不需要分配给多个线程进行处理
         GroupChatServer groupChatServer = new GroupChatServer();
         groupChatServer.listen();
     }
+}
+
+// 为了对应单reactor模式 可以这样写
+// 然后在reactor中去创建handler对象，并调用handler方法
+class MyHandler {
+    public void readData(){}
+
+    public void sendInfoToOtherClient(){}
 }
