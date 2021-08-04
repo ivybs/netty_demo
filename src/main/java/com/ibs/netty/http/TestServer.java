@@ -15,6 +15,8 @@ public class TestServer {
         EventLoopGroup workerGraoup = new NioEventLoopGroup();
 
         try{
+
+            // 服务器启动引导类使用的是ServerBootstrap  而客户端使用的启动引导类则是Bootstrap
             // 创建服务器端的启动对象，进行参数的配置
             ServerBootstrap bootstrap = new ServerBootstrap();
 

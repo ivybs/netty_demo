@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
  * 1. 我们自定义的handler需要继承netty规定好的handlerAdapter(规定好的规范)
  * 2.这时我们自定义的handler才能称作式一个handler
  *
+ * 如果事件的运动方向是从客户端到服务端，那么称这个事件为出栈
  * */
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     // 读取数据的事件

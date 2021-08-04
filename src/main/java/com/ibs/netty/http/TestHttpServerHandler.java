@@ -17,6 +17,11 @@ import java.net.URI;
  * 说明：
  * 1.SimpleChannelInboundHandler是ChannelInboundHandlerAdapter
  * 2.HttpObject表示客户端和服务器端相互通讯的数据被封装成HttpObject了
+ *
+ * 这样的一个双向链表确实是一个先进后出的栈
+ * 双向链表有头尾各有一个指针。通常头指针我们认为是服务器端，而尾是客户端
+ * 入站事件和出站事件在--个双向链表中，入站事件会从链表head往后传递到最后-个入站的handler,
+ * 出站事件会从链表tail往前传递到最前一一个出站的handler,两种类型的handler互不干扰
  * */
 public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
     // channelRead0 读取客户端数据
